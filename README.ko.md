@@ -103,13 +103,6 @@ go vet ./...
 go build -o beszel-monitor ./cmd/beszel-monitor
 ```
 
-Windows에서 전체 릴리스 압축 파일 생성:
-
-```powershell
-.\scripts\package.ps1
-```
-
-`v1.0.0` 같은 태그를 푸시하면 GitHub Actions가 네 개의 압축 파일을 자동으로 빌드하고 릴리스합니다.
 
 ## 라이선스
 
