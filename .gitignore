@@ -13,6 +13,8 @@ config.*.json
 /beszel-monitor
 /beszel-monitor.exe
 /beszel-monitor-linux-*
+/beszelview
+/beszelview.exe
 /bin/
 /dist/
 *.test

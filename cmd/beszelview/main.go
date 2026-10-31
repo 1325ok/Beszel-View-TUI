@@ -25,7 +25,7 @@ func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 	if err := app.Run(ctx, cfg, os.Stdout); err != nil && ctx.Err() == nil {
-		fmt.Fprintln(os.Stderr, "beszel-monitor:", err)
+		fmt.Fprintln(os.Stderr, "beszelview:", err)
 		os.Exit(1)
 	}
 }

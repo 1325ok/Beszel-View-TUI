@@ -41,7 +41,7 @@ try {
         $env:GOARM = if ($target.ContainsKey("GOARM")) { $target.GOARM } else { "" }
 
         $binaryPath = Join-Path $stage $target.Binary
-        & go build -buildvcs=false -trimpath -ldflags "-s -w" -o $binaryPath ./cmd/beszel-monitor
+        & go build -buildvcs=false -trimpath -o $binaryPath ./cmd/beszelview
         if ($LASTEXITCODE -ne 0) {
             throw "Build failed for $($target.Name)"
         }

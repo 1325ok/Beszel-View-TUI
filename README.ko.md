@@ -4,6 +4,10 @@
 
 [Beszel](https://github.com/henrygd/beszel) Hub의 여러 서버 상태를 표시하는 비공식 CLI/TUI 클라이언트입니다.
 
+<p align="center">
+  <img src="img/gif1.gif" alt="Beszel View Small 레이아웃" width="200">
+</p>
+
 - 전체 현황, 장비 상세, 장애 경고 화면 자동 순환
 - 모든 장비의 CPU, 메모리, 디스크 사용량 확인
 - 모든 장비를 한 화면에 표시하는 단일 모드
@@ -19,21 +23,21 @@ cp config.example.json config.json
 Linux:
 
 ```bash
-chmod +x beszel-monitor-linux-amd64
-./beszel-monitor-linux-amd64 --config config.json
+chmod +x beszelview
+./beszelview --config config.json
 ```
 
 Windows:
 
 ```powershell
 Copy-Item config.example.json config.json
-.\beszel-monitor.exe --config config.json
+.\beszelview.exe --config config.json
 ```
 
 Go로 설치:
 
 ```bash
-go install github.com/1325ok/Beszel-View-TUI/cmd/beszel-monitor@latest
+go install github.com/1325ok/Beszel-View-TUI/cmd/beszelview@latest
 ```
 
 ## 레이아웃과 화면 크기
@@ -45,17 +49,31 @@ go install github.com/1325ok/Beszel-View-TUI/cmd/beszel-monitor@latest
 | `auto` | `100x30` 이상이면 large, 아니면 small | `38x13` |
 
 ```bash
-beszel-monitor --config config.json --layout small --size 50x16
-beszel-monitor --config config.json --layout large --size 80x22
-beszel-monitor --config config.json --layout auto --size auto
+beszelview --config config.json --layout small --size 50x16
+beszelview --config config.json --layout large --size 80x22
+beszelview --config config.json --layout auto --size auto
 ```
+
+## 화면 미리보기
+
+### Small 레이아웃
+
+| 단일 모드 | 일반 순환 모드 |
+|:---:|:---:|
+| <img src="img/img1.png" alt="Small 단일 모드" width="420"> | <img src="img/gif1.gif" alt="Small 순환 모드" width="420"> |
+
+### Large 레이아웃
+
+| 단일 모드 | 일반 순환 모드 |
+|:---:|:---:|
+| <img src="img/img2.png" alt="Large 단일 모드" width="420"> | <img src="img/gif2.gif" alt="Large 순환 모드" width="420"> |
 
 ## 단일 모드
 
 화면 순환 없이 한 페이지에 장비 상태를 표시합니다.
 
 ```bash
-beszel-monitor --config config.json --single --size 80x24
+beszelview --config config.json --single --size 80x24
 ```
 
 `config.json`에서 `"single_mode": true`를 설정하거나 `BESZEL_SINGLE=true` 환경변수를 사용할 수도 있습니다. 장비가 화면에 모두 들어가지 않으면 `+N MORE`가 표시되며, 화면 높이를 늘리면 더 많은 행을 볼 수 있습니다.
@@ -74,7 +92,7 @@ beszel-monitor --config config.json --single --size 80x24
 | `--alert-duration` | `20s` | 경고 화면 표시 시간 |
 | `--alert-blink` | `750ms` | 경고 점멸 주기 |
 
-전체 옵션은 `beszel-monitor --help`로 확인할 수 있습니다.
+전체 옵션은 `beszelview --help`로 확인할 수 있습니다.
 
 ## 환경변수
 
@@ -100,7 +118,7 @@ CLI 옵션, 환경변수, `config.json` 순서로 우선 적용됩니다.
 ```bash
 go test ./...
 go vet ./...
-go build -o beszel-monitor ./cmd/beszel-monitor
+go build -o beszelview ./cmd/beszelview
 ```
 
 

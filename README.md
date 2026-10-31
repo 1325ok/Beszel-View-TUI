@@ -4,6 +4,10 @@
 
 An unofficial CLI/TUI client for [Beszel](https://github.com/henrygd/beszel) that monitors multiple servers from a Beszel Hub.
 
+<p align="center">
+  <img src="img/gif1.gif" alt="Beszel View small layout" width="200">
+</p>
+
 - Rotating overview, device detail, and alert screens
 - View CPU, memory, and disk usage for every device
 - Single-page mode for viewing all devices at once
@@ -19,21 +23,21 @@ cp config.example.json config.json
 Linux:
 
 ```bash
-chmod +x beszel-monitor-linux-amd64
-./beszel-monitor-linux-amd64 --config config.json
+chmod +x beszelview
+./beszelview --config config.json
 ```
 
 Windows:
 
 ```powershell
 Copy-Item config.example.json config.json
-.\beszel-monitor.exe --config config.json
+.\beszelview.exe --config config.json
 ```
 
 Install with Go:
 
 ```bash
-go install github.com/1325ok/Beszel-View-TUI/cmd/beszel-monitor@latest
+go install github.com/1325ok/Beszel-View-TUI/cmd/beszelview@latest
 ```
 
 ## Layouts and viewport size
@@ -45,17 +49,31 @@ go install github.com/1325ok/Beszel-View-TUI/cmd/beszel-monitor@latest
 | `auto` | Uses large at `100x30` or above, otherwise small | `38x13` |
 
 ```bash
-beszel-monitor --config config.json --layout small --size 50x16
-beszel-monitor --config config.json --layout large --size 80x22
-beszel-monitor --config config.json --layout auto --size auto
+beszelview --config config.json --layout small --size 50x16
+beszelview --config config.json --layout large --size 80x22
+beszelview --config config.json --layout auto --size auto
 ```
+
+## Preview
+
+### Small layout
+
+| Single-page mode | Standard rotating mode |
+|:---:|:---:|
+| <img src="img/img1.png" alt="Small single-page layout" width="420"> | <img src="img/gif1.gif" alt="Small rotating layout" width="420"> |
+
+### Large layout
+
+| Single-page mode | Standard rotating mode |
+|:---:|:---:|
+| <img src="img/img2.png" alt="Large single-page layout" width="420"> | <img src="img/gif2.gif" alt="Large rotating layout" width="420"> |
 
 ## Single-page mode
 
 Show device status on one page without screen rotation:
 
 ```bash
-beszel-monitor --config config.json --single --size 80x24
+beszelview --config config.json --single --size 80x24
 ```
 
 You can also set `"single_mode": true` in `config.json` or use `BESZEL_SINGLE=true`. If every device cannot fit, the screen displays `+N MORE`; increase the viewport height to show more rows.
@@ -74,7 +92,7 @@ You can also set `"single_mode": true` in `config.json` or use `BESZEL_SINGLE=tr
 | `--alert-duration` | `20s` | Alert screen duration |
 | `--alert-blink` | `750ms` | Alert blink interval |
 
-Run `beszel-monitor --help` to see every option.
+Run `beszelview --help` to see every option.
 
 ## Environment variables
 
@@ -100,7 +118,7 @@ CLI options override environment variables, which override `config.json`.
 ```bash
 go test ./...
 go vet ./...
-go build -o beszel-monitor ./cmd/beszel-monitor
+go build -o beszelview ./cmd/beszelview
 ```
 
 

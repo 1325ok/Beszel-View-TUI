@@ -57,7 +57,7 @@ func Load(args []string) (Config, error) {
 	if err := applyEnv(&c); err != nil {
 		return c, err
 	}
-	fs := flag.NewFlagSet("beszel-monitor", flag.ContinueOnError)
+	fs := flag.NewFlagSet("beszelview", flag.ContinueOnError)
 	fs.Usage = func() {
 		fmt.Fprintln(fs.Output(), "[ Beszel View ]")
 		fmt.Fprintf(fs.Output(), "Usage of %s:\n", fs.Name())
