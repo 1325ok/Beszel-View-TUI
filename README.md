@@ -103,6 +103,14 @@ go vet ./...
 go build -o beszel-monitor ./cmd/beszel-monitor
 ```
 
+Create all release archives on Windows:
+
+```powershell
+.\scripts\package.ps1
+```
+
+Pushing a tag such as `v1.0.0` automatically builds and publishes the four archives through GitHub Actions.
+
 ## License
 
 MIT License. See [LICENSE](LICENSE).

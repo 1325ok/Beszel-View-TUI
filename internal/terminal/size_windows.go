@@ -32,6 +32,11 @@ func Prepare(out io.Writer) (func(), error) {
 	var original uint32
 	result, _, callErr := getConsoleMode.Call(handle, uintptr(unsafe.Pointer(&original)))
 	if result == 0 {
+		// Git Bash/mintty exposes stdout as a pipe instead of a Win32 console
+		// handle, but it already understands ANSI control sequences.
+		if supportsANSIEnvironment() {
+			return func() {}, nil
+		}
 		return nil, fmt.Errorf("stdout is not an interactive ANSI console: %v", callErr)
 	}
 	result, _, callErr = setConsoleMode.Call(handle, uintptr(original|enableVirtualTerminalProcessing))
@@ -39,6 +44,11 @@ func Prepare(out io.Writer) (func(), error) {
 		return nil, fmt.Errorf("cannot enable Windows virtual terminal mode: %v", callErr)
 	}
 	return func() { _, _, _ = setConsoleMode.Call(handle, uintptr(original)) }, nil
+}
+
+func supportsANSIEnvironment() bool {
+	term := os.Getenv("TERM")
+	return (term != "" && term != "dumb") || os.Getenv("MSYSTEM") != ""
 }
 
 type coord struct{ X, Y int16 }
