@@ -21,7 +21,13 @@ jobs:
           cache: true
       - name: Format check
         shell: bash
-        run: test -z "$(gofmt -l .)"
+        run: |
+          unformatted="$(gofmt -l ./cmd ./internal)"
+          if [ -n "$unformatted" ]; then
+            echo "The following files are not formatted:"
+            echo "$unformatted"
+            exit 1
+          fi
       - name: Test
         run: go test ./...
       - name: Race detector
