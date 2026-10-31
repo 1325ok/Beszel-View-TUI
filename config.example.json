@@ -1,0 +1,15 @@
+{
+  "hub_url": "https://beszel.example.com",
+  "email": "monitor@example.com",
+  "password": "change-me",
+  "refresh_interval": "3s",
+  "rotation_interval": "5s",
+  "alert_duration": "20s",
+  "alert_blink_interval": "750ms",
+  "layout": "auto",
+  "size": "auto",
+  "single_mode": false,
+  "cpu": { "warning": 75, "critical": 90 },
+  "ram": { "warning": 80, "critical": 92 },
+  "disk": { "warning": 80, "critical": 92 }
+}

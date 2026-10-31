@@ -1,0 +1,46 @@
+# Local configuration and secrets
+config.json
+config.*.json
+!config.example.json
+.env
+.env.*
+!.env.example
+
+/beszel_data/
+/beszel.exe
+
+# Go build and test output
+/beszel-monitor
+/beszel-monitor.exe
+/beszel-monitor-linux-*
+/bin/
+/dist/
+*.test
+*.prof
+coverage.out
+coverage.html
+.gocache/
+go.work
+go.work.sum
+
+# Editors and IDEs
+.idea/
+.vscode/
+.vs/
+.fleet/
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.orig
+tmp/
